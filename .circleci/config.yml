@@ -8,7 +8,4 @@ jobs:
         only: main
     steps:
       - checkout
-      - run: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP
-      - run:
-          name: Run deploy scripts
-          command: ./deploy_project.sh
+      - run: ssh -oStrictHostKeyChecking=no -v $DROPLET_USER@$DROPLET_IP “./deploy_project.sh”
