@@ -21,6 +21,6 @@ deploy-prod:
           filters:
             branches:
               only:
-                - master
+                - main
           requires:
             - build
