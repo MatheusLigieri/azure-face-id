@@ -18,3 +18,10 @@ app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`)
 });
 
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + "/pages/index.html");
+});
+app.get('/admin', function(req, res) {
+  res.sendFile(__dirname + "/pages/admin.html");
+});
+
