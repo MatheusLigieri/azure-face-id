@@ -4,5 +4,5 @@ module.exports = app => {
         //GET
         .get(controller.listPersons)
         //POST
-        .post(controller.createPersons)
+        // .post(controller.createPersons)
 }
