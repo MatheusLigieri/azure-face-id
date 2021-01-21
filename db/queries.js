@@ -10,9 +10,9 @@ class Query {
             if(err){
                 console.log(err)
             } else {
-                console.log(res)
+                console.log(res.rows)
             }
-            return res
+            return res.rows
         })
     }
 
