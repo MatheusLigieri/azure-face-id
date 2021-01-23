@@ -13,7 +13,6 @@ module.exports = app => {
     var payload = req.body
     var array = []
     console.log(req.params.id)
-
     Object.keys(payload).forEach(key => {
       array.push(payload[key])
     });
@@ -26,6 +25,16 @@ module.exports = app => {
     Person.GET(res, array)
   }
 
+  controller.patchPersonByID = (req, res) => {
+    var q = '';
+    var body = req.body;
+    console.log(body)
+    Object.keys(body).forEach(key => {
+      q = q + key + " = '" + body[key] + "', "
+    })
+    q = q.slice(0, -2);
+    Person.PATCH(q, req.params.id, res)
+  }
 
   return controller;
 }

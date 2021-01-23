@@ -4,10 +4,8 @@ const table = 'dev'
 
 class Person {
     GET(req, id) {
-
         if (id == null || id == undefined) {
             var q = `SELECT id, cloud_id, email, phone, cellphone, cpf FROM ${table}.person WHERE deleted = false`;
-
             conn.query(q, (err, res) => {
                 if (err) {
                     req.status(400).json(res.rows)
@@ -17,7 +15,6 @@ class Person {
             })
         } else {
             var q = `SELECT id, cloud_id, email, phone, cellphone, cpf FROM ${table}.person WHERE deleted = false AND id = $1`;
-
             conn.query(q, id, (err, res) => {
                 if (err) {
                     req.status(400).json(err)
@@ -40,6 +37,19 @@ class Person {
             } else {
                 console.log(res.rows)
                 req.status(201).json(res.rows[0])
+            }
+        })
+    }
+    PATCH(values, id, req) {
+        var q = 'UPDATE ' + table + '.person SET ' + values + ' WHERE id = ' + "'" + id + "'" + ' AND deleted = false RETURNING *'
+        console.log(q)
+        conn.query(q, (err, res) => {
+            if (err) {
+                console.log(err)
+                req.status(400)
+            } else {
+                console.log(res.rows)
+                req.status(200).json(res.rows[0])
             }
         })
     }

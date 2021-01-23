@@ -5,4 +5,5 @@ module.exports = app => {
         .post(controller.createPerson)
     app.route('/api/v1/person/:id')
         .get(controller.listPersonByID)
+        .patch(controller.patchPersonByID)
 }
