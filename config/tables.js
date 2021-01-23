@@ -15,8 +15,6 @@ class CreateTable {
             if (err) {
                 console.log(err)
             } else {
-                console.log(res)
-                console.log('success')
             }
         })
     }
@@ -33,8 +31,6 @@ class CreateTable {
             if (err) {
                 console.log(err)
             } else {
-                console.log(res)
-                console.log('success')
             }
         })
 
@@ -46,7 +42,6 @@ class CreateTable {
             if(err) {
                 console.log(err)
             } else {
-                console.log(res)
             }
         })
     }
@@ -62,8 +57,6 @@ class CreateTable {
             if (err) {
                 console.log(err)
             } else {
-                console.log(res)
-                console.log('success')
             }
         })
     }

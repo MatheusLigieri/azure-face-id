@@ -7,7 +7,6 @@ connection.connect(err => {
   if (err) {
     console.log(err)
   } else {
-    console.log('connected')
     CreateTable.init(connection)
   }
 

@@ -6,4 +6,5 @@ module.exports = app => {
     app.route('/api/v1/person/:id')
         .get(controller.listPersonByID)
         .patch(controller.patchPersonByID)
+        .delete(controller.deletePersonByID)
 }
