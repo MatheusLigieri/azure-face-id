@@ -5,15 +5,27 @@ module.exports = app => {
 
   controller.listPersons = (req, res) => {
     Person.GET(res)
+    console.log(req.params.id)
+
   }
 
   controller.createPerson = (req, res) => {
     var payload = req.body
-    console.log(payload)
-    console.log('typeof')
-    console.log(typeof(payload))
-    Person.POST(payload, res)
+    var array = []
+    console.log(req.params.id)
+
+    Object.keys(payload).forEach(key => {
+      array.push(payload[key])
+    });
+    Person.POST(array, res)
   }
+
+  controller.listPersonByID = (req, res) => {
+    var array = []
+    array.push(req.params.id)
+    Person.GET(res, array)
+  }
+
 
   return controller;
 }

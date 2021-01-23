@@ -3,19 +3,31 @@ const conn = require('../config/database');
 const table = 'dev'
 
 class Person {
+    GET(req, id) {
 
-    GET(req) {
-        var q = `SELECT id, cloud_id, email, phone, cellphone, cpf FROM ${table}.person WHERE deleted = false`;
+        if (id == null || id == undefined) {
+            var q = `SELECT id, cloud_id, email, phone, cellphone, cpf FROM ${table}.person WHERE deleted = false`;
 
-        conn.query(q, (err, res) => {
-            if (err) {
-                console.log(err)
-                req.status(400).json(res.rows)
-            } else {
-                console.log(res.rows)
-                req.status(200).json(res.rows)
-            }
-        })
+            conn.query(q, (err, res) => {
+                if (err) {
+                    req.status(400).json(res.rows)
+                } else {
+                    req.status(200).json(res.rows)
+                }
+            })
+        } else {
+            var q = `SELECT id, cloud_id, email, phone, cellphone, cpf FROM ${table}.person WHERE deleted = false AND id = $1`;
+
+            conn.query(q, id, (err, res) => {
+                if (err) {
+                    req.status(400).json(err)
+                    console.log(err)
+                } else {
+                    req.status(200).json(res.rows)
+                }
+            })
+        }
+
     }
 
     POST(payload, req) {
@@ -23,7 +35,7 @@ class Person {
         console.log(payload)
         conn.query(q, payload, (err, res) => {
             if (err) {
-                console.log(err.stack)
+                console.log(err)
                 req.status(400)
             } else {
                 console.log(res.rows)

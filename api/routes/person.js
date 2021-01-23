@@ -1,8 +1,8 @@
 module.exports = app => {
     const controller = app.controllers.person
     app.route('/api/v1/person')
-        //GET
         .get(controller.listPersons)
-        //POST
         .post(controller.createPerson)
+    app.route('/api/v1/person/:id')
+        .get(controller.listPersonByID)
 }
