@@ -8,7 +8,7 @@ module.exports = () => {
 
 
     // SETANDO VARIÁVEIS DA APLICAÇÃO
-    app.set('port', process.env.PORT || 8080);
+    app.set('port', process.env.PORT || config.server.port);
     // MIDDLEWARES
     app.use(bodyParser.json());
 

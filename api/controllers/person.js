@@ -5,7 +5,6 @@ module.exports = app => {
   controller.listPersons = (req, res) => {
     Person.GET(res)
     console.log(req.params.id)
-
   }
   controller.createPerson = (req, res) => {
     var payload = req.body
@@ -16,7 +15,6 @@ module.exports = app => {
     });
     Person.POST(array, res)
   }
-
   controller.listPersonByID = (req, res) => {
     var array = []
     array.push(req.params.id)

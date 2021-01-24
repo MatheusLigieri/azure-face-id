@@ -3,10 +3,11 @@ const table = 'dev'
 class CreateTable {
     init(connection) {
         this.connection = connection;
-        this.createSchema()
-        this.addExtension()
-        this.createTablePerson()
-        this.createTableActivities()
+        this.createSchema();
+        this.addExtension();
+        this.createTablePerson();
+        this.createTableActivities();
+        this.createTableUser();
     }
 
     createSchema() {
@@ -36,10 +37,10 @@ class CreateTable {
 
     }
 
-    addExtension(){
+    addExtension() {
         var q = `CREATE EXTENSION IF NOT EXISTS "pgcrypto";`
-        this.connection.query(q, (err,res) => {
-            if(err) {
+        this.connection.query(q, (err, res) => {
+            if (err) {
                 console.log(err)
             } else {
             }
@@ -60,6 +61,25 @@ class CreateTable {
             }
         })
     }
+    createTableUser() {
+        const queryPerson = `CREATE TABLE IF NOT EXISTS ${table}.user 
+            (
+                id uuid PRIMARY KEY UNIQUE NOT NULL default gen_random_uuid() ,
+                username varchar(25) NOT NULL,
+                password varchar (25) NOT NULL,
+                token varchar(200) NOT NULL,
+                email varchar(100),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );`
+        this.connection.query(queryPerson, (err, res) => {
+            if (err) {
+                console.log(err)
+            } else {
+            }
+        })
+    }
+
+
 }
 
 module.exports = new CreateTable
