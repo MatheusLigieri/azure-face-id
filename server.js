@@ -9,18 +9,21 @@ connection.connect(err => {
   } else {
     CreateTable.init(connection)
   }
-
 })
+
 
 // RODANDO NOSSA APLICAÇÃO NA PORTA SETADA
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`)
 });
-
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.sendFile(__dirname + "/pages/index.html");
 });
-app.get('/admin', function(req, res) {
+app.get('/login', function (req, res) {
+  res.sendFile(__dirname + "/pages/login.html");
+});
+
+app.get('/admin', function (req, res) {
   res.sendFile(__dirname + "/pages/admin.html");
 });
 
