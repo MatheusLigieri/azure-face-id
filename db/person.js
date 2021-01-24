@@ -17,7 +17,6 @@ class Person {
             conn.query(q, id, (err, res) => {
                 if (err) {
                     req.status(400).json(err)
-                    console.log(err)
                 } else {
                     req.status(200).json(res.rows)
                 }
