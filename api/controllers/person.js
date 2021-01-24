@@ -4,7 +4,6 @@ module.exports = app => {
   const controller = {};
   controller.listPersons = (req, res) => {
     Person.GET(res)
-    console.log(req.params.id)
   }
   controller.createPerson = (req, res) => {
     var payload = req.body

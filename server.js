@@ -10,12 +10,6 @@ connection.connect(err => {
     CreateTable.init(connection)
   }
 })
-
-
-// RODANDO NOSSA APLICAÇÃO NA PORTA SETADA
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`)
-});
 app.get('/', function (req, res) {
   res.sendFile(__dirname + "/pages/index.html");
 });
@@ -24,6 +18,12 @@ app.get('/login', function (req, res) {
 });
 
 app.get('/admin', function (req, res) {
-  res.sendFile(__dirname + "/pages/admin.html");
+  res.render(__dirname + "/pages/admin");
+});
+app.get('/lead', function (req, res) {
+  res.render(__dirname + "/pages/lead");
 });
 
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`)
+});
